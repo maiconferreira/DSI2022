@@ -25,7 +25,11 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
+<<<<<<< HEAD
 			<version>5.1.3</version>
+=======
+			<version>4.0.0</version>
+>>>>>>> de0f95860113777e5dabe49c39e3c0c065ddc67e
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
