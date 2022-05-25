@@ -1,9 +1,16 @@
 package br.univille.dsi2022.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Familia {
@@ -12,8 +19,12 @@ public class Familia {
     private long id;
     private String nome;
     private int quantidadeDeMembros;
-    private MembroDaFamilia membro;
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "membro_id")
+    private List<MembroDaFamilia> membro = new ArrayList<>();
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
     private ListaDeCompras listaDeCompras;
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH})
     private Dispensa dispensa;
     public String getNome() {
         return nome;
@@ -27,12 +38,6 @@ public class Familia {
     public void setQuantidadeDeMembros(int quantidadeDeMembros) {
         this.quantidadeDeMembros = quantidadeDeMembros;
     }
-    public MembroDaFamilia getMembro() {
-        return membro;
-    }
-    public void setMembro(MembroDaFamilia membro) {
-        this.membro = membro;
-    }
     public ListaDeCompras getListaDeCompras() {
         return listaDeCompras;
     }
@@ -45,7 +50,16 @@ public class Familia {
     public void setDispensa(Dispensa dispensa) {
         this.dispensa = dispensa;
     }
-
-
-    
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public List<MembroDaFamilia> getMembro() {
+        return membro;
+    }
+    public void setMembro(List<MembroDaFamilia> membro) {
+        this.membro = membro;
+    }    
 }
