@@ -13,8 +13,8 @@ public class HomeController {
     
     @GetMapping()
     public ModelAndView index(){
-        var nome = "zezinho";
-        var sobrenome = "da Silva";
+        String nome = "zezinho";
+        String sobrenome = "da Silva";
         HashMap<String,String> mapa_da_dados = new HashMap<>();
         mapa_da_dados.put("nomenatela", nome);
         mapa_da_dados.put("sobrenomenatela", sobrenome);

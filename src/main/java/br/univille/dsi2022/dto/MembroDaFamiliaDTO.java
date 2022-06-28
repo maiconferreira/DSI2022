@@ -1,26 +1,15 @@
-
-package br.univille.dsi2022.entity;
+package br.univille.dsi2022.dto;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-public class MembroDaFamilia {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MembroDaFamiliaDTO {
     private long id;
-    @Column(length = 500)
     private String nome;
     private String sexo;
     private String email;
-    @Temporal(value = TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataDeNascimento;
 
     public long getId() {
@@ -53,5 +42,6 @@ public class MembroDaFamilia {
     public void setDataDeNascimento(Date dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
+    
     
 }

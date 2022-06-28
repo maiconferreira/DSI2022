@@ -19,4 +19,17 @@ public class Dispensa {
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "setor_id")
     private List<SetorDaDispensa> setor = new ArrayList<>();
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public List<SetorDaDispensa> getSetor() {
+        return setor;
+    }
+    public void setSetor(List<SetorDaDispensa> setor) {
+        this.setor = setor;
+    }
+    
 }

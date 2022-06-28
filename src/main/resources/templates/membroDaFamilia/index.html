@@ -7,28 +7,28 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <div class="container">
-            <a th:href="@{/produto/novo}" class="btn btn-primary">Novo</a>
-            <table class="table" id="produto">
+            <a th:href="@{/membroDaFamilia/novo}" class="btn btn-primary">Novo</a>
+            <table class="table" id="membroDaFamilia">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Quantidade Atual</th>
-                        <th>Quantidade Ideal</th>
-                        <th>Quantidade Mínima</th>
+                        <th>Sexo</th>
+                        <th>E-mail</th>
+                        <th>Data de Nascimento</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="umProduto : ${listaProdutos}">
-                        <td th:text="${umProduto.id}"></td>
-                        <td th:text="${umProduto.nome}"></td>
-                        <td th:text="${umProduto.quantidadeAtual}"></td>
-                        <td th:text="${umProduto.quantidadeIdeal}"></td>
-                        <td th:text="${umProduto.quantidadeMinima}"></td>
-                        <td><a th:href="@{'/produto/alterar/' + ${umProduto.id}}"
+                    <tr th:each="umMembroDaFamilia : ${listaMembroDaFamilia}">
+                        <td th:text="${umMembroDaFamilia.id}"></td>
+                        <td th:text="${umMembroDaFamilia.nome}"></td>
+                        <td th:text="${umMembroDaFamilia.sexo}"></td>
+                        <td th:text="${umMembroDaFamilia.email}"></td>
+                        <td th:text="${umMembroDaFamilia.dataDeNascimento}"></td>
+                        <td><a th:href="@{'/membroDaFamilia/alterar/' + ${umMembroDaFamilia.id}}"
                              class="btn btn-primary">Alterar</a>
-                             <button class="btn btn-danger js-delete" th:data-id="${umProduto.id}">
+                             <button class="btn btn-danger js-delete" th:data-id="${umMembroDaFamilia.id}">
                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
                              </span>Excluir</button>
                         </td>
@@ -40,16 +40,16 @@
         <div th:include="layout :: footer">(footer)</div>
         <script type="text/javascript">
             $(document).ready(function(){
-                $("#produto").on('click',".js-delete", function(){
+                $("#membroDaFamilia").on('click',".js-delete", function(){
                     let button = $(this);
                     bootbox.confirm("Confirma a exclusão do registro?",
                         function(result) {
                             if (result) {
                                 $.ajax({
-                                    url: '/produto/delete/' + button.attr("data-id"),
+                                    url: '/membroDaFamilia/delete/' + button.attr("data-id"),
                                     method: "GET",
                                     success : function(){
-                                        window.location.href = "/produto";
+                                        window.location.href = "/membroDaFamilia";
                                     }
                                 });
                             }

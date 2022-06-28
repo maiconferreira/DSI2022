@@ -7,31 +7,26 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <div class="container">
-            <a th:href="@{/produto/novo}" class="btn btn-primary">Novo</a>
-            <table class="table" id="produto">
+            <a th:href="@{/dispensa/novo}" class="btn btn-primary">Novo</a>
+            <table class="table" id="dispensa">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Quantidade Atual</th>
-                        <th>Quantidade Ideal</th>
-                        <th>Quantidade Mínima</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="umProduto : ${listaProdutos}">
-                        <td th:text="${umProduto.id}"></td>
-                        <td th:text="${umProduto.nome}"></td>
-                        <td th:text="${umProduto.quantidadeAtual}"></td>
-                        <td th:text="${umProduto.quantidadeIdeal}"></td>
-                        <td th:text="${umProduto.quantidadeMinima}"></td>
-                        <td><a th:href="@{'/produto/alterar/' + ${umProduto.id}}"
+                    <tr th:each="umSetorDaDispensa : ${listaSetorDaDispensa}">
+                        <td th:text="${umSetorDaDispensa.id}"></td>
+                        <td th:text="${umSetorDaDispensa.nome}"></td>
+                        </td>
+                        <td><a th:href="@{'/setorDaDispensa/alterar/' + ${umSetorDaDispensa.id}}"
                              class="btn btn-primary">Alterar</a>
-                             <button class="btn btn-danger js-delete" th:data-id="${umProduto.id}">
+                             <button class="btn btn-danger js-delete" th:data-id="${umSetorDaDispensa.id}">
                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
                              </span>Excluir</button>
                         </td>
+                    </tr>
                     </tr>
                 </tbody>
             </table>
@@ -40,16 +35,16 @@
         <div th:include="layout :: footer">(footer)</div>
         <script type="text/javascript">
             $(document).ready(function(){
-                $("#produto").on('click',".js-delete", function(){
+                $("#dispensa").on('click',".js-delete", function(){
                     let button = $(this);
                     bootbox.confirm("Confirma a exclusão do registro?",
                         function(result) {
                             if (result) {
                                 $.ajax({
-                                    url: '/produto/delete/' + button.attr("data-id"),
+                                    url: '/dispensa/delete/' + button.attr("data-id"),
                                     method: "GET",
                                     success : function(){
-                                        window.location.href = "/produto";
+                                        window.location.href = "/dispensa";
                                     }
                                 });
                             }
