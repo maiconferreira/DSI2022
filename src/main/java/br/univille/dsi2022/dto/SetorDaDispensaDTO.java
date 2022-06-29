@@ -2,12 +2,12 @@ package br.univille.dsi2022.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-import br.univille.dsi2022.entity.Produto;
+
 
 public class SetorDaDispensaDTO {
     private long id;
     private String nome;
-    private List<Produto> produto = new ArrayList<>();
+    private List<ProdutoDTO> produto = new ArrayList<>();
     public long getId() {
         return id;
     }
@@ -20,10 +20,10 @@ public class SetorDaDispensaDTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public List<Produto> getProduto() {
+    public List<ProdutoDTO> getProduto() {
         return produto;
     }
-    public void setProduto(List<Produto> produto) {
+    public void setProduto(List<ProdutoDTO> produto) {
         this.produto = produto;
     }
 

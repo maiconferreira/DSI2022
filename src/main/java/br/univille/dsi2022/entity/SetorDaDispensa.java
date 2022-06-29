@@ -18,7 +18,7 @@ public class SetorDaDispensa {
     private long id;
     private String nome;
     @OneToMany(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name = "setor_id")
     private List<Produto> produto = new ArrayList<>();
     public long getId() {
         return id;

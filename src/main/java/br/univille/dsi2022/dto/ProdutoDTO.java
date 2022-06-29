@@ -2,7 +2,7 @@ package br.univille.dsi2022.dto;
 
 public class ProdutoDTO {
     private long id;
-    private String nome;
+    private String produtoNome;
     private int quantidadeAtual;
     private int quantidadeIdeal;
     private int quantidadeMinima;
@@ -13,11 +13,12 @@ public class ProdutoDTO {
     public void setId(long id) {
         this.id = id;
     }
-    public String getNome() {
-        return nome;
+    
+    public String getProdutoNome() {
+        return produtoNome;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setProdutoNome(String produtoNome) {
+        this.produtoNome = produtoNome;
     }
     public int getQuantidadeAtual() {
         return quantidadeAtual;

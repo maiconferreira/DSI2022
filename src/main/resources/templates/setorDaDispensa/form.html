@@ -11,9 +11,48 @@
                 <input type="hidden" th:field="*{id}">
                 <div class="form-group">
                     <label for="txtnome">Nome</label>
-                    <input type="text" class="form-control" id="txtnome" th:field="*{nome}">
+                    <input type="text" class="form-control" id="txtnome" th:field="${setorDaDispensa.nome}">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="container" th:object="${novoProduto}">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label for="txtnome">nome</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" th:field="${novoProduto.produtoNome}">
+                        </div>
+                        <div class="col-sm">
+                            <button type="submit" name="insertprod" class="btn btn-primary">Inserir item</button>
+                        </div>
+                    </div>
+
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>nome</th>
+                            <th>quantidade atual</th>
+                            <th>quantidade ideal</th>
+                            <th>quantidade minima</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="umProduto, stat : *{produto}">
+                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].produtoNome}"/>
+                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].quantidadeAtual}"/>
+                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].quantidadeIdeal}"/>
+                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].quantidadeMinima}"/>
+                            <td th:text="${umProduto.produtoNome}"></td>
+                            <td th:text="${umProduto.quantidadeAtual}"></td>
+                            <td th:text="${umProduto.quantidadeIdeal}"></td>
+                            <td th:text="${umProduto.quantidadeMinima}"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+                <button type="submit" name="save" class="btn btn-primary">Submit</button>
             </form>
         </div>
 
