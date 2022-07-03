@@ -10,7 +10,7 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nome;
+    private String produtoNome;
     private int quantidadeAtual;
     private int quantidadeIdeal;
     private int quantidadeMinima;
@@ -21,10 +21,10 @@ public class Produto {
         this.id = id;
     }
     public String getNome() {
-        return nome;
+        return produtoNome;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String produtoNome) {
+        this.produtoNome = produtoNome;
     }
     public int getQuantidadeAtual() {
         return quantidadeAtual;
