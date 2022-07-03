@@ -9,20 +9,14 @@
         <div class="container">
             <a th:href="@{/setorDaDispensa/novo}" class="btn btn-primary">Novo</a>
             <table class="table" id="setorDaDispensa">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr th:each="umSetorDaDispensa : ${listaSetorDaDispensa}">
-                        <td th:text="${umSetorDaDispensa.id}"></td>
-                        <td th:text="${umSetorDaDispensa.nome}"></td>
+                        <td><a class="btn btn-secondary"
+                            th:href="@{'/setorDaDispensa/alterar/' + ${umSetorDaDispensa.id}}"
+                            th:text="${umSetorDaDispensa.nome}">
+                            </a>
                         </td>
-                        <td><a th:href="@{'/setorDaDispensa/alterar/' + ${umSetorDaDispensa.id}}"
-                             class="btn btn-primary">Alterar</a>
-                             <button class="btn btn-danger js-delete" th:data-id="${umSetorDaDispensa.id}">
+                        <td><button class="btn btn-danger js-delete" th:data-id="${umSetorDaDispensa.id}">
                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
                              </span>Excluir</button>
                         </td>

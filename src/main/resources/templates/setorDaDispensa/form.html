@@ -14,15 +14,34 @@
                     <input type="text" class="form-control" id="txtnome" th:field="${setorDaDispensa.nome}">
                 </div>
                 <div class="container" th:object="${novoProduto}">
+                    <input type="hidden" th:field="${novoProduto.id}">
                     <div class="row">
                         <div class="col-sm">
-                            <label for="txtnome">nome</label>
+                            <label for="txtnome">Nome</label>
                         </div>
                         <div class="col-sm">
                             <input type="text" class="form-control" th:field="${novoProduto.produtoNome}">
                         </div>
                         <div class="col-sm">
-                            <button type="submit" name="insertprod" class="btn btn-primary">Inserir item</button>
+                            <label for="txtquantidadeAtual">Quantidade Atual</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" th:field="${novoProduto.quantidadeAtual}">
+                        </div>
+                        <div class="col-sm">
+                            <label for="txtquantidadeIdeal">Quantidade Ideal</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" th:field="${novoProduto.quantidadeIdeal}">
+                        </div>
+                        <div class="col-sm">
+                            <label for="txtquantidadeMinima">Quantidade Mínima</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control" th:field="${novoProduto.quantidadeMinima}">
+                        </div>
+                        <div class="col-sm">
+                            <button type="submit" name="insertprod" class="btn btn-primary">Adicionar Produto</button>
                         </div>
                     </div>
 
@@ -30,22 +49,28 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>nome</th>
-                            <th>quantidade atual</th>
-                            <th>quantidade ideal</th>
-                            <th>quantidade minima</th>
+                            <th>Nome</th>
+                            <th>Quantidade Atual</th>
+                            <th>Quantidade Ideal</th>
+                            <th>Quantidade Mínima</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="umProduto, stat : *{produto}">
-                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].produtoNome}"/>
-                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].quantidadeAtual}"/>
-                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].quantidadeIdeal}"/>
-                            <input type="hidden" th:field="${setorDaDispensa.produto[__${stat.index}__].quantidadeMinima}"/>
+                        <tr th:each="umProduto, stat : ${setorDaDispensa.listaProdutos}">
+                            <input type="hidden" th:field="${setorDaDispensa.listaProdutos[__${stat.index}__].produtoNome}"/>
+                            <input type="hidden" th:field="${setorDaDispensa.listaProdutos[__${stat.index}__].quantidadeAtual}"/>
+                            <input type="hidden" th:field="${setorDaDispensa.listaProdutos[__${stat.index}__].quantidadeIdeal}"/>
+                            <input type="hidden" th:field="${setorDaDispensa.listaProdutos[__${stat.index}__].quantidadeMinima}"/>
                             <td th:text="${umProduto.produtoNome}"></td>
                             <td th:text="${umProduto.quantidadeAtual}"></td>
                             <td th:text="${umProduto.quantidadeIdeal}"></td>
                             <td th:text="${umProduto.quantidadeMinima}"></td>
+                            <td><a th:field="${setorDaDispensa.listaProdutos[__${stat.index}__].id}"
+                             class="btn btn-primary">Alterar</a>
+                             <button class="btn btn-danger js-delete" th:data-id="${setorDaDispensa.listaProdutos[__${stat.index}__].id}">
+                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+                             </span>Excluir</button>
+                        </td>
                         </tr>
                     </tbody>
 

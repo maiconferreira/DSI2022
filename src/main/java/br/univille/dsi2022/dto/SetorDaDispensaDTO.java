@@ -7,7 +7,7 @@ import java.util.List;
 public class SetorDaDispensaDTO {
     private long id;
     private String nome;
-    private List<ProdutoDTO> produto = new ArrayList<>();
+    private List<ProdutoDTO> listaProdutos = new ArrayList<>();
     public long getId() {
         return id;
     }
@@ -20,11 +20,11 @@ public class SetorDaDispensaDTO {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public List<ProdutoDTO> getProduto() {
-        return produto;
+    public List<ProdutoDTO> getListaProdutos() {
+        return listaProdutos;
     }
-    public void setProduto(List<ProdutoDTO> produto) {
-        this.produto = produto;
+    public void setListaProduto(List<ProdutoDTO> listaProdutos) {
+        this.listaProdutos = listaProdutos;
     }
 
 }

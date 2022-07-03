@@ -54,7 +54,7 @@ public class SetorDaDispensaController {
     }
     @PostMapping(params= {"insertprod"})
     public ModelAndView saveProduto(SetorDaDispensaDTO setorDaDispensa, ProdutoDTO novoProduto) {
-        setorDaDispensa.getProduto().add(novoProduto);
+        setorDaDispensa.getListaProdutos().add(novoProduto);
         HashMap<String,Object> dados = new HashMap<>();
         dados.put("setorDaDispensa", setorDaDispensa);
         dados.put("novoProduto", new ProdutoDTO());

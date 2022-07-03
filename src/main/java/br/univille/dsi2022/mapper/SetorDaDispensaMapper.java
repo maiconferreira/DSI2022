@@ -9,8 +9,8 @@ import br.univille.dsi2022.entity.SetorDaDispensa;
 
 @Mapper
 public interface SetorDaDispensaMapper {
-    List<SetorDaDispensaDTO> mapSetorDaDispensa(List<SetorDaDispensa> setorDaDispensa);
-    List<SetorDaDispensa> mapSetorDaDispensaDTO(List<SetorDaDispensaDTO> setorDaDispensa);
+    List<SetorDaDispensaDTO> mapSetorDaDispensa(List<SetorDaDispensa> listaSetoresDaDispensa);
+    List<SetorDaDispensa> mapSetorDaDispensaDTO(List<SetorDaDispensaDTO> listaSetoresDaDispensa);
     SetorDaDispensaDTO mapSetorDaDispensa(SetorDaDispensa setorDaDispensa);
     SetorDaDispensa mapSetorDaDispensaDTO(SetorDaDispensaDTO setorDaDispensa);
 }

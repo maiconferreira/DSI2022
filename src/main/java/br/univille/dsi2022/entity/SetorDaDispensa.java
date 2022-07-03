@@ -19,7 +19,7 @@ public class SetorDaDispensa {
     private String nome;
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "setor_id")
-    private List<Produto> produto = new ArrayList<>();
+    private List<Produto> listaProdutos = new ArrayList<>();
     public long getId() {
         return id;
     }
@@ -32,11 +32,11 @@ public class SetorDaDispensa {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public List<Produto> getProduto() {
-        return produto;
+    public List<Produto> getListaProdutos() {
+        return listaProdutos;
     }
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
+    public void setListaProdutos(List<Produto> listaProdutos) {
+        this.listaProdutos = listaProdutos;
     }
 
 }
