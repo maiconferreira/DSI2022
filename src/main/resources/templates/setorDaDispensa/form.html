@@ -17,7 +17,7 @@
                     <input type="hidden" th:field="${novoProduto.id}">
                     <div class="row">
                         <div class="col-sm">
-                            <label for="txtnome">Nome</label>
+                            <label for="txtnome">Nome do Produto</label>
                         </div>
                         <div class="col-sm">
                             <input type="text" class="form-control" th:field="${novoProduto.produtoNome}">
@@ -49,7 +49,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
+                            <th>Nome do Produto</th>
                             <th>Quantidade Atual</th>
                             <th>Quantidade Ideal</th>
                             <th>Quantidade Mínima</th>
@@ -65,7 +65,7 @@
                             <td th:text="${umProduto.quantidadeAtual}"></td>
                             <td th:text="${umProduto.quantidadeIdeal}"></td>
                             <td th:text="${umProduto.quantidadeMinima}"></td>
-                            <td><a th:field="${setorDaDispensa.listaProdutos[__${stat.index}__].id}"
+                            <td><a th:href="@{'/produto/alterar/' + ${setorDaDispensa.listaProdutos[__${stat.index}__].id}}"
                              class="btn btn-primary">Alterar</a>
                              <button class="btn btn-danger js-delete" th:data-id="${setorDaDispensa.listaProdutos[__${stat.index}__].id}">
                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
