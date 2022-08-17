@@ -17,24 +17,30 @@ public class SetorDaDispensa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = { CascadeType.ALL })
     @JoinColumn(name = "setor_id")
     private List<Produto> listaProdutos = new ArrayList<>();
+
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public List<Produto> getListaProdutos() {
         return listaProdutos;
     }
+
     public void setListaProdutos(List<Produto> listaProdutos) {
         this.listaProdutos = listaProdutos;
     }

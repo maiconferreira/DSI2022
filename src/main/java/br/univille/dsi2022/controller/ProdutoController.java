@@ -49,4 +49,5 @@ public class ProdutoController {
         service.delete(id);
         return new ModelAndView("redirect:/produto");
     }
+
 }
