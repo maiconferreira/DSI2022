@@ -11,7 +11,7 @@
             <form th:action="@{/setorDaDispensa/(form)}" 
                 th:object="${setorDaDispensa}"
                 method="POST">
-
+                <input type="hidden" th:field="${setorDaDispensa.id}">
                 <div class="form-group">
                     <label for="txtnome">Setor:</label>
                     <input type="text" class="form-control" id="txtnome" th:field="${setorDaDispensa.nome}">
@@ -24,6 +24,8 @@
                             <tr>
                                 <th>Nome do Produto</th>
                                 <th>Quantidade Atual</th>
+                                <th>Quantidade Ideal</th>
+                                <th>Quantidade Mínima</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -31,30 +33,43 @@
                             <tr th:each="umProduto, stat : *{listaProdutos}">
                                 <td th:text="${umProduto.produtoNome}"></td>
                                 <td th:text="${umProduto.quantidadeAtual}"></td>
+                                <td th:text="${umProduto.quantidadeIdeal}"></td>
+                                <td th:text="${umProduto.quantidadeMinima}"></td>
                                 <input type="hidden" th:field="*{listaProdutos[__${stat.index}__].id}"/>
                                 <input type="hidden" th:field="*{listaProdutos[__${stat.index}__].produtoNome}"/>
                                 <input type="hidden" th:field="*{listaProdutos[__${stat.index}__].quantidadeAtual}"/>
+                                <input type="hidden" th:field="*{listaProdutos[__${stat.index}__].quantidadeIdeal}"/>
+                                <input type="hidden" th:field="*{listaProdutos[__${stat.index}__].quantidadeMinima}"/>
                                 <td>
                                     <button type="submit" name="removeitem" th:value="__${stat.index}__" class="btn btn-primary">Remover</button>
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                      </table>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Novo Produto</h5>
-
                       <div class="form-group">
-                        <label for="txtdescricao">Nome do Produto</label>
+                        <label for="txtnome">Nome do Produto</label>
                         <input type="text" class="form-control"
-                        id="txtdescricao" th:field="${novoProduto.produtoNome}" >
+                        id="txtnome" th:field="${novoProduto.produtoNome}" >
                       </div>
                       <div class="form-group">
-                        <label for="txtdescricao">Quantidade Atual</label>
+                        <label for="txtquantidadeAtual">Quantidade Atual</label>
                         <input type="text" class="form-control"
-                        id="txtvalor" th:field="${novoProduto.quantidadeAtual}" >
+                        id="txtquantidadeAtual" th:field="${novoProduto.quantidadeAtual}" >
+                      </div>
+                      <div class="form-group">
+                        <label for="txtquantidadeIdeal">Quantidade Ideal</label>
+                        <input type="text" class="form-control"
+                        id="txtquantidadeIdeal" th:field="${novoProduto.quantidadeIdeal}" >
+                      </div>
+                      <div class="form-group">
+                        <label for="txtquantidadeMinima">Quantidade Mínima</label>
+                        <input type="text" class="form-control"
+                        id="txtquantidadeMinima" th:field="${novoProduto.quantidadeMinima}" >
                       </div>
 
                       <button type="submit" name="incitem" class="btn btn-primary">Incluir Produto</button>

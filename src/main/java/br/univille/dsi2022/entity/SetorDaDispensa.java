@@ -17,7 +17,7 @@ public class SetorDaDispensa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    @OneToMany(cascade = { CascadeType.ALL })
+    @OneToMany()
     @JoinColumn(name = "setor_id")
     private List<Produto> listaProdutos = new ArrayList<>();
 

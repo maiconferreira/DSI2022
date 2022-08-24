@@ -57,6 +57,7 @@ public class SetorDaDispensaController {
     public ModelAndView incluirProc(@ModelAttribute("setorDaDispensa") SetorDaDispensaDTO setorDaDispensa,
             @ModelAttribute("novoProduto") ProdutoDTO novoProduto) {
 
+        novoProduto.setId(0);
         setorDaDispensa.getListaProdutos().add(novoProduto);
 
         HashMap<String, Object> dados = new HashMap<>();
@@ -95,5 +96,11 @@ public class SetorDaDispensaController {
         dados.put("novoProduto", novoProduto);
 
         return new ModelAndView("setorDaDispensa/form", dados);
+    }
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable long id) {
+        service.delete(id);
+        return new ModelAndView("redirect:/setorDaDispensa");
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.univille.dsi2022.dto.SetorDaDispensaDTO;
 import br.univille.dsi2022.entity.SetorDaDispensa;
 import br.univille.dsi2022.mapper.SetorDaDispensaMapper;
+import br.univille.dsi2022.repository.ProdutoRepository;
 import br.univille.dsi2022.repository.SetorDaDispensaRepository;
 import br.univille.dsi2022.service.SetorDaDispensaService;
 
@@ -18,6 +19,8 @@ public class SetorDaDispensaServiceImpl implements SetorDaDispensaService {
 
     @Autowired
     private SetorDaDispensaRepository repository;
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     private SetorDaDispensaMapper mapper = Mappers.getMapper(SetorDaDispensaMapper.class);
 
@@ -30,6 +33,9 @@ public class SetorDaDispensaServiceImpl implements SetorDaDispensaService {
     @Override
     public SetorDaDispensaDTO save(SetorDaDispensaDTO setorDaDispensa) {
         SetorDaDispensa setorDaDispensaEntity = mapper.mapSetorDaDispensaDTO(setorDaDispensa);
+        for (var umProd : setorDaDispensaEntity.getListaProdutos()) {
+            produtoRepository.save(umProd);
+        }
         repository.save(setorDaDispensaEntity);
         return mapper.mapSetorDaDispensa(setorDaDispensaEntity);
     }
