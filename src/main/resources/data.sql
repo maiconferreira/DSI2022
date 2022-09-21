@@ -1,2 +1,1 @@
-insert into produto(nome, quantidade_Atual, quantidade_Ideal, quantidade_Minima)
-values ('Arroz', 2, 5, 1)
+insert ignore into usuario (id,usuario,senha) values(1,'admin','admin');
