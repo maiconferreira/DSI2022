@@ -7,6 +7,8 @@ import br.univille.dsi2022.dto.ProdutoDTO;
 public interface ProdutoService {
     public List<ProdutoDTO> getAll();
 
+    public List<ProdutoDTO> getLista();
+
     public ProdutoDTO save(ProdutoDTO produto);
 
     public ProdutoDTO findById(long id);

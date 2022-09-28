@@ -32,10 +32,22 @@ public class SetorDaDispensaServiceImpl implements SetorDaDispensaService {
 
     @Override
     public SetorDaDispensaDTO save(SetorDaDispensaDTO setorDaDispensa) {
+        var setorAntigo = repository.findById(setorDaDispensa.getId());
+        if (setorAntigo.isPresent()){
+            for(var umProdAntigo : setorAntigo.get().getListaProdutos()){
+                var umProdutoEncontrado = setorDaDispensa.getListaProdutos().stream().filter(o -> o.getId() == umProdAntigo.getId()).findAny()
+                .orElse(null);
+                if(umProdutoEncontrado ==  null){
+                    produtoRepository.delete(umProdAntigo);
+                }
+            }
+        }
         SetorDaDispensa setorDaDispensaEntity = mapper.mapSetorDaDispensaDTO(setorDaDispensa);
         for (var umProd : setorDaDispensaEntity.getListaProdutos()) {
             produtoRepository.save(umProd);
         }
+
+
         repository.save(setorDaDispensaEntity);
         return mapper.mapSetorDaDispensa(setorDaDispensaEntity);
     }
@@ -47,7 +59,8 @@ public class SetorDaDispensaServiceImpl implements SetorDaDispensaService {
             SetorDaDispensa setorDaDispensaEntity = setorDaDispensa.get();
             return mapper.mapSetorDaDispensa(setorDaDispensaEntity);
         }
-        return new SetorDaDispensaDTO();
+        //return new SetorDaDispensaDTO();
+        return null;
     }
 
     @Override

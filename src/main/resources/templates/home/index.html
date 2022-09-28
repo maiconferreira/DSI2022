@@ -5,6 +5,7 @@
     <head th:include="layout :: htmlhead"></head>
 
     <body>
+        <h1>Meu Celeiro</h1>
         <nav class="navbar bg-light">
             <div class="container-fluid">
             <a class="navbar-brand" th:href="@{/setorDaDispensa}">Minha Dispensa</a>
@@ -13,6 +14,20 @@
                 <a class="navbar-brand" th:href="@{/membroDaFamilia}">Familia</a>
             </div>
         </nav>
+        <div class="container">
+            <table class="table" id="produto">
+                <thead>
+                    <tr>
+                        <th>Lista de Compras</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="umProduto : ${listaProdutos}">
+                        <td th:text="${umProduto.produtoNome}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div th:include="layout :: footer">(footer)</div>
         

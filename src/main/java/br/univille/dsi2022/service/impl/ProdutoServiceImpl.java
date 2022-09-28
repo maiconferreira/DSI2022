@@ -1,5 +1,6 @@
 package br.univille.dsi2022.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +48,19 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Override
     public void delete(long id) {
         repository.deleteById(id);
+    }
+
+
+    @Override
+    public List<ProdutoDTO> getLista() {
+        List<ProdutoDTO> listaDeCompras = new ArrayList<>();
+        List<ProdutoDTO> listaProdutos = mapper.mapProduto(repository.findAll());
+        for (ProdutoDTO produto : listaProdutos) {
+            if (produto.getQuantidadeAtual() < produto.getQuantidadeIdeal()) {
+                listaDeCompras.add(produto);
+            }
+        }
+        return listaDeCompras;
     }
 
 }
