@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.univille.dsi2022.repository.UsuarioRepository;
+import br.univille.dsi2022.repository.MembroDaFamiliaRepository;
 
 import org.springframework.security.core.userdetails.User;
 
@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.User;
 public class UserDatailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UsuarioRepository repository;
+    private MembroDaFamiliaRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username)

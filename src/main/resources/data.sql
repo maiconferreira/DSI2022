@@ -1,1 +1,1 @@
-insert ignore into usuario (id,usuario,senha) values(1,'admin','admin');
+insert ignore into membro_da_familia (id,usuario,senha) values(1,'admin','admin');

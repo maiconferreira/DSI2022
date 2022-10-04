@@ -15,6 +15,7 @@
                         <th>Nome</th>
                         <th>Sexo</th>
                         <th>E-mail</th>
+                        <th>Usuário</th>
                         <th>Data de Nascimento</th>
                         <th></th>
                     </tr>
@@ -25,6 +26,7 @@
                         <td th:text="${umMembroDaFamilia.nome}"></td>
                         <td th:text="${umMembroDaFamilia.sexo}"></td>
                         <td th:text="${umMembroDaFamilia.email}"></td>
+                        <td th:text="${umMembroDaFamilia.usuario}"></td>
                         <td th:text="${umMembroDaFamilia.dataDeNascimento}"></td>
                         <td><a th:href="@{'/membroDaFamilia/alterar/' + ${umMembroDaFamilia.id}}"
                              class="btn btn-primary">Alterar</a>
