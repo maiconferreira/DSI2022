@@ -3,3 +3,36 @@ GET http://localhost:8080/api/v1/membrosDaFamilia
 ###
 
 POST http://localhost:8080/api/v1/membrosDaFamilia
+Content-Type: application/json
+
+{
+    "nome": "Maicon",
+    "sexo": "masculino",
+    "email": "maicon@maicon",
+    "usuario": "maicon",
+    "senha": "maicon"
+}
+
+###
+
+GET http://localhost:8080/api/v1/membrosDaFamilia/3
+
+
+###
+
+PUT http://localhost:8080/api/v1/membrosDaFamilia/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "nome": "Maicon",
+  "sexo": "masculino",
+  "email": "maicon@maicon",
+  "dataDeNascimento": null,
+  "usuario": "maiconteste",
+  "senha": "senhaalteradaviaapi"
+}
+
+###
+
+DELETE http://localhost:8080/api/v1/membrosDaFamilia/2
