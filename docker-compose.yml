@@ -1,0 +1,29 @@
+version: '3'
+services:
+  webdsi2022:
+    image: maicondsi2022:latest
+    depends_on:
+      - "dbmaicon"
+    ports:
+      - "8090:8080"
+    links:
+      - dbmaicon
+    environment:
+      DB_HOST: 'dbmaicon:33060'
+      DB_USER: 'root'
+      DB_PASSWORD: 'root'
+      DB_NAME: 'dsi2022'
+      SPRING_PROFILES_ACTIVE: 'prod'
+  dbmaicon:
+    container_name: dbmaicon
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'dsi2022'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+#    ports:
+#        - '3306:3306'
+#    expose:
+#        - '3306'
